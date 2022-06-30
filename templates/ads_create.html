@@ -1,0 +1,13 @@
+{% extends 'flatpages/default.html' %}
+ 
+{% block title %} Ads list {% endblock title %}
+ 
+{% block content %}
+<h1>Объявление</h1>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %} 
+    {{ form.as_p }}
+    <input type="submit" value="Добавить объявление">
+</form>
+<a href="{% url '' %}">Главная страница</a><br>
+{% endblock content %}

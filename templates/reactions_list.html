@@ -1,0 +1,25 @@
+{% extends 'flatpages/default.html' %} 
+
+{% block title %}
+Reactions
+{% endblock title %}
+
+{% block content %}
+<h1>Отклики</h1>
+<table class="table_with_text_on_center" border="1" style="display: inline-block;">
+    <tr>
+        <td><h5>Объявление</h5></td>
+        <td><h5>Пользователь</h5></td>
+        <td><h5>Отклик</h5></td>
+    </tr>
+    {% for reactions in filter.qs %}
+    <tr>
+        <td><p align="center">{{ reactions.ads.header }}</p></td>
+        <td><p align="center">{{ reactions.authors }}</p></td>
+        <td><p align="center">{{ reactions.reaction }}</p></td>
+        <td> <p align="center"><a href="{% url 'reactions_add' reactions.id %}"><u>Откликнуться</u></a> <a href="{% url 'reactions_delete' reactions.id %}"><u>Удалить</u></a></p></td>
+    </tr>
+    {% endfor %}
+</table><br>
+<a href="{% url '' %}">Главная страница</a><br>
+{% endblock content %}
